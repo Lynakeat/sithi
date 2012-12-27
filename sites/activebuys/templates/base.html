@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load deals_tags %}
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<title>{% block title %}ACTIVEBUYS | Your Resource for Active, Healthy Living{% endblock %}</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    {% block extra_meta %}
+    {% endblock %}
+	<link rel="icon" type="image/vnd.microsoft.icon" href="{{ STATIC_URL}}css/images/favicon.ico" />
+	<link rel="stylesheet" href="{{ STATIC_URL}}css/style.css?v=120925" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ STATIC_URL}}color/colorbox.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="{{ STATIC_URL}}css/foxy-styles.css" type="text/css" media="all" />
+
+    {% block extra_style %}
+    {% endblock %}
+
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="{{ STATIC_URL}}css/ie6.css" type="text/css" media="all" />
+		<script src="{{ STATIC_URL}}js/png-fix.js" type="text/javascript" charset="utf-8"></script>
+	<![endif]-->
+	<style>{# foxycart fix #}</style>
+
+	{% block js %}
+	<script src="{{ STATIC_URL}}js/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></script>
+	{#}<script src="{{ STATIC_URL}}color/jquery.colorbox.js" type="text/javascript" charset="utf-8"></script>{#}
+	<script src="{{ STATIC_URL}}js/jquery.jcarousel.js" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ STATIC_URL}}js/jquery.custom_checkbox.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL}}js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL}}js/jquery.expander.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ STATIC_URL}}js/functions.js?v=120709" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher:'1e403f9e-72f7-4ce1-b6f4-7247c54b6f67'});</script>  
+
+    <!-- BEGIN FOXYCART FILES -->
+    <script type="text/javascript" charset="utf-8">
+//     var colorbox_width = "800px";
+//     var colorbox_height = "600px";
+    </script>
+    <script src="{{ FOXYCART_CDN_URL }}foxycart.complete.2.js" type="text/javascript" charset="utf-8"></script>
+    {#}<script src="{{ STATIC_URL}}js/foxycart_no_colorbox.js" type="text/javascript" charset="utf-8"></script>{#}
+    <!-- END FOXYCART FILES -->
+	{% endblock %}
+
+	{% block extra_head %}
+    {% endblock %}
+</head>
+<body>
+{% block facebook_js %}{% endblock %}
+<div id="wrapper">
+	<div class="shell">
+		<!-- Start of header !-->
+		<div id="header">
+			<h1 id="logo"><a href="/">active buys</a></h1>
+
+            {% block navigation %}{% include 'navigation.html' %}{% endblock %}
+
+            {% block user_panel %}{% include 'user_panel.html' %}{% endblock %}
+
+            <div class="cl">&nbsp;</div>
+
+            <a href="{% url registration-refer-popup %}" class="pop-loader cboxElement btn_referral">Refer a Friend</a>
+            <div class="cl">&nbsp;</div>
+
+		</div>
+		<!-- End of header !-->
+
+		<!-- Start of container !-->
+		<div class="container">
+        {% block container %}
+			<div id="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+			</div>
+
+			<div class="content">
+            {% block content %}
+			{% endblock %}
+			</div>
+
+			<div class="cl">&nbsp;</div>
+        {% endblock %}
+		</div>
+		<!-- End of container !-->
+
+	</div>
+	<div id="footer-push">&nbsp;</div>
+</div>
+<!-- Start of footer !-->
+<div id="footer">
+	<div class="shell">
+		<div class="footer-left">
+			<h2>Follow Us</h2>
+			<div class="footer-socials">
+				<a href="http://twitter.com/#!/ActiveBuys" class="twitter-ico" target="_blank">Twitter</a>
+				<a href="https://www.facebook.com/ACTIVEBUYS" class="facebook-ico" target="_blank">Facebook</a>
+				<div class="cl">&nbsp;</div>
+			</div>
+
+			<p class="copy">
+				Copyright {% now "Y" %} ACTIVEBUYS, LLC.
+			</p>
+		</div>
+
+		<div class="footer-right">
+			{% block past-deals %}
+				{% past_deals %}
+			{% endblock %}
+
+			<p class="footer-nav">
+				<a href="{% url about %}">Meet Us</a><span>|</span>
+				<a href="{% url business %}">For Business</a><span>|</span>
+				<a href="{% url employer %}">For Employer</a><span>|</span>
+				<a href="{% url affiliate %}">Affiliates</a><span>|</span>
+                <a href="{% url non-profits %}">Non-Profits</a><span>|</span>
+				<a href="{% url terms %}">Terms</a><span>|</span>
+                <a href="{% url policy %}">Privacy</a><span>|</span>
+                <a href="{% url faq %}">FAQ</a><span>|</span>
+				<a href="{% url contacts %}">Contact Us</a>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="tooltip">
+	<div class="tooltip-t">&nbsp;</div>
+	<div class="tooltip-c">
+		<p></p>
+	</div>
+	<div class="tooltip-b">&nbsp;</div>
+</div>
+{% block footer_script %}
+    
+{% endblock %}
+<!-- End of footer !-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24914027-1']);
+  _gaq.push(['_setDomainName', '.activebuys.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

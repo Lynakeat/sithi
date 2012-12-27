@@ -1,0 +1,21 @@
+Hi {{user.get_full_name}}!
+
+Thank you for joining ACTIVEBUYS! You are one step closer to living a more active and healthy lifestyle.
+
+To activate your account, please click on the following link:
+http://{{ domain }}{% url account-confirm %}?code={{code}}
+
+Thanks,
+ACTIVEBUYS Team
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------
+Automated email, do not reply.
+-----------------------------------------------------------

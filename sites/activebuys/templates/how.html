@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block navigation %}{% include 'navigation.html' with place="how" %}{% endblock %}
+
+{% block container %}
+    <div class="main-box">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+            <h2>How It Works</h2>
+            <div class="services">
+                <ul>
+                    <li class="mail-ico first">
+                        <p>Subscribe to receive active, healthy deals in your inbox.</p>
+                    </li>
+                    <li class="cash-ico">
+                        <p>If you like the <br />deal (and we know you will), buy it! </p>
+                    </li>
+                    <li class="chat-ico">
+                        <p>Share with friends and family to help them live an active, healthy lifestyle.</p>
+                    </li>
+                    <li class="badge-ico">
+                        <p>You choose a charity to support. We donate a portion of your purchase.</p>
+                    </li>
+                    <li class="voucher-ico last">
+                        <p>Print your voucher, present it to the business and enjoy!</p>
+                    </li>
+                </ul>
+                <div class="cl">&nbsp;</div>
+            </div>
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+    <div class="cl">&nbsp;</div>
+{% endblock %}

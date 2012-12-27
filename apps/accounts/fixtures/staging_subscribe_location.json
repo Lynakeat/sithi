@@ -1,0 +1,19 @@
+[
+    {
+        "pk": 1,
+        "model": "accounts.subscribelocation",
+        "fields": {
+            "name": "Nashville",
+            "cmonitor_name": "Nashville, TN"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "accounts.subscribelocation",
+        "fields": {
+            "name": "Somewhere Else (Keep me informed)",
+            "cmonitor_name": "Somewhere else... but keep me informed!"
+        }
+    }
+
+]

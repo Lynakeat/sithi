@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block navigation %}{% include 'navigation.html' with place="accounts" %}{% endblock %}
+
+{% block extra_style %}{{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL}}css/resources.css?v=120720" type="text/css" media="all" />
+    
+{% endblock %}
+
+{% block container %}
+    <div id="top">
+        {% block top %}
+        {# account selector #}
+
+        {% include "accounts/_account_list.html" %}
+        {% endblock %}
+    </div>
+     {{ block.super }}
+{% endblock %}

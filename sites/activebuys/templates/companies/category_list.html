@@ -1,0 +1,117 @@
+{% extends 'companies/base.html' %}
+{% load markup thumbnail easy_maps_tags deals_tags %}
+
+
+{% block sidebar %}
+    {# instructions #}
+    <div class="side-box deals-details">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+            <h3 class="box-heading">Get Started</h3>
+            <ol>
+                <li>Choose your area of interest to find exactly what you're looking for.</li> 
+                <li>Enter your zip code to see the businesses nearest you.</li>
+                <li>Sort and filter to find exactly what you need.</li>
+                <li>Leave your personal review to let everyone know what businesses get your approval!</li>
+            </ol>
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+
+    {# get-listed #}
+    {% include "companies/_get_listed.html" %}
+{% endblock %}
+
+{% block top %}
+    {# category selector #}
+    {% include "companies/_category_selector.html" with categories=object_list %}
+{% endblock top %}
+
+{% block content %}
+{# featured location #}
+{% if featured_location %}
+<div class="big-box">
+    <div class="box-t"></div>
+    <div id="featured-listing" class="box-c">
+        <h3>Featured Business</h3>
+        {% with featured_location as f %}
+            {% if f.logo %}
+            {% thumbnail f.logo "253x209" crop="center" as im %}
+            <div class="featured-logo">
+                <a href="{{ f.get_absolute_url }}"><img class="featured-logo" src="{{ im.url }}" alt="{{ f.place }}" /></a>
+            </div>
+            {% endthumbnail %}
+            {% endif %}
+            <div class="featured-info">
+                <h2 class="featured-name">{{ f.place }}</h2>
+                <p>{{ f.description|truncatewords:40 }}</p>
+                <a class="more" href="{{ f.get_absolute_url }}" title="{{ f.place }}">Learn More</a>
+            </div>
+        {% endwith %}
+    </div>
+    <div class="box-b"></div>
+</div>
+{% endif %}
+
+{# top 2 locations by rating #}
+<div id="top-rated" class="box left-box-narrower">
+    <h3>Top Rated</h3>
+    {% if highest_rated %}
+    <div class="location-previews">
+        {% for l in highest_rated %}
+            <div class="location">
+                {% thumbnail l.logo "180x76" crop="center" as im %}
+                <div class="location-logo">
+                    <a href="{{ l.get_absolute_url }}"><img class="" src="{{ im.url }}" alt="{{ l.place }}" /></a>
+                </div>
+                {% endthumbnail %}
+                <div class="location-place">
+                    <a href="{{ l.get_absolute_url }}">{{ l.place|truncatewords:7 }}</a>
+                    <div class="reviews-total">({{ l.total_reviews }} review{{ l.total_reviews|pluralize }})</div>
+                </div>
+                <div class="location-body">
+                    {{ l.description|truncatewords:10 }} <a href="{{ l.get_absolute_url }}" class="more">Read more</a>
+                </div>
+                <div class="location-average-rating">
+                    Average Rating: <span class="rating rating{{ l.average_rating|floatformat:0 }}">{{ l.average_rating|floatformat:0 }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <em>Not enough reviews exist yet</em>
+    {% endif %}
+</div>
+{# latest review #}
+<div id="latest-review" class="box right-box-wider">
+    <h3>Latest Review</h3>
+    {% if latest_review %}
+        <div class="location-previews">
+            {% with latest_review as r %}
+            <div class="location">
+                {% thumbnail r.location.logo "180x76" crop="center" as im %}
+                <div class="location-logo">
+                    <a href="{{ r.location.get_absolute_url }}"><img src="{{ im.url }}" alt="{{ r.location.place|truncatewords:7 }}" /></a>
+                </div>
+                {% endthumbnail %}
+                <div class="location-place">
+                    <a href="{{ r.location.get_absolute_url }}">{{ r.location.place }}</a>
+                    <div class="reviews-total">({{ r.location.total_reviews }} review{{ r.location.total_reviews|pluralize }})</div>
+                </div>
+                <div class="location-body">
+                    "{{ r.comment|truncatewords:16 }}" <a href="{{ r.location.get_absolute_url }}" class="more">Read more</a>
+                </div>
+                <div class="location-user">
+                    By {{ r.user.get_full_name }}.
+                </div>
+                <div class="location-rating">
+                    Rating: <span class="rating rating{{ r.score|floatformat:0 }}">{{ r.score|floatformat:0 }}</span>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+    {% else %}
+        <em>No reviews exist yet</em>
+    {% endif %}
+</div>
+{% endblock %}

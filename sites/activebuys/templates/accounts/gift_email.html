@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>Email</title>
+	<style type="text/css" media="screen">
+		body{ padding:0 !important; margin:0 !important; display:block !important; background:#383838;}
+		a{ color:#6a8c0f; text-decoration:none; }
+		.text { color:#383838; font-family:Arial; font-size:14px; line-height:20px; text-align:left;  }
+		.text a{ color:#6a8c0f; text-decoration:none; }
+		p { padding:0; margin:0; }
+		.text ul { color:#383838; font-family:Arial; font-size:14px; line-height:20px; text-align:left; padding:0; margin:0; margin-left:28px; margin-top:5px !important; margin-bottom:0;}
+		.text ul li { padding:0; margin:0; margin-bottom:5px;}
+		.text ol { color:#383838; font-family:Arial; font-size:14px; line-height:20px; text-align:left; padding:0; margin:0; margin-left:28px; margin-top:5px !important; margin-bottom:0;}
+		.text ol li{ padding:0; margin:0; margin-bottom:5px;}
+		.footer { color:#a6a5a5; font-family:Arial; font-size:12px; line-height:18px; text-align:left; }
+		.footer a{ color:#a6ce39; text-decoration:none;}
+	</style>
+</head>
+<body style="padding:0; margin:0; background:#383838;">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#383838">
+	<tr>
+
+		<td align="center" valign="top" bgcolor="#040404">
+			<table width="797" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="77" valign="top" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://{{site.domain}}/static/images/left.jpg" width="77" height="477" border="0" alt="" /></td>
+								<td width="643" valign="top" bgcolor="#ffffff">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+										<tr>
+											<td align="left">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr>
+														<td width="185" style="font-size:0pt; line-height:0pt; text-align:left;" valign="top"><a href="http://{{site.domain}}" target="_blank"><img src="http://{{site.domain}}/static/images/logo-nashville.jpg" width="185" height="70" border="0" alt="" /></a></td>
+														<td width="20" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+														<td style="color:#4c4c4c; font-family:Arial; font-size:16px; line-height:18px; text-align:left; font-style:italic; " valign="top">
+															<div style="font-size:0pt; line-height:0pt; height:36px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="36" style="height:36px" alt="" /></div>															Your Resource for Active, Healthy Living</td>
+
+														<td width="116" valign="top" style="color:#6d6d6d; font-family:Arial; font-size:12px; line-height:18px; text-align:left;">
+															<div style="font-size:0pt; line-height:0pt; height:20px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="20" style="height:20px" alt="" /></div>															<table border="0" cellspacing="0" cellpadding="0">
+																<tr>
+
+																	<td width="14" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="http://twitter.com/#!/activebuys"><img src="http://{{site.domain}}/static/images/ico_twitter.jpg" width="14" height="14" border="0" alt="" /></a></td>
+																	<td width="3" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+																	<td width="14" style="font-size:0pt; line-height:0pt; text-align:left;"><a href="#"><img src="http://{{site.domain}}/static/images/ico_facebook.jpg" width="14" height="14" border="0" alt="" /></a></td>
+
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+
+											<td style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://{{site.domain}}/static/images/top.jpg" width="643" height="15" border="0" alt="" /></td>
+										</tr>
+										<tr>
+											<td>
+												<table width="100%" border="0" cellspacing="0" cellpadding="23">
+													<tr>
+														<td style="color:#383838; font-family:Arial; font-size:14px; line-height:20px; text-align:left; " class="text">
+
+															<div style="color:#4c4c4c; font-family:'Century Gothic', Arial; font-size:28px; line-height:32px; font-weight:bold; text-align:left;">Hello {{ name_to }}</div>
+
+															<div style="font-size:0pt; line-height:0pt; height:8px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="8" style="height:8px" alt="" /></div>
+															You must be a special person, because {{ name_from }} has bought you a gift to fuel your active, healthy lifestyle! <br /><br />
+															Below is a summary of your gift and included in this email is a printable version of your voucher needed to redeem your deal.   Now, you just need to print your voucher, present it to the business, and enjoy your ACTIVEBUYS deal! Don't worry if you lose this email, you can always have your great friend re-send your voucher from ACTIVEBUYS.com in the <a href="http://{{site.domain}}{% url account-profile %}" style="color:#6a8c0f; text-decoration:none;"><strong>My ACTIVEBUYS</strong></a> section. <br /><br />
+
+
+
+                                                            {% for item in deals_list %}
+															<span style="color:#6d6d6d; font-size:12px;">Deal Purchased:</span> <strong>{{ item.deal }}</strong><br />
+															<span style="color:#6d6d6d; font-size:12px;">Business:</span> <strong>{{ item.company }}</strong><br />
+															<span style="color:#6d6d6d; font-size:12px;">Location:</span> <strong>{{ item.location }}</strong><br />
+															<span style="color:#6d6d6d; font-size:12px;">Non-Profit Benefited:</span> <strong>{{ item.nonprofit }}</strong><br />
+															<span style="color:#6d6d6d; font-size:12px;">Quantity:</span> <strong>{{ item.quantity }}</strong><br />
+                                                            <br />
+                                                            {% endfor %}
+
+															Don't forget to check out ACTIVEBUYS.com and see what we are about if you haven't joined! Your friend likes us! Maybe you should too!  <br /><br />
+
+															<em>If you have questions or comments about your purchase, please email us at <a href="mailto:support@activebuys.com" style="color:#6a8c0f; text-decoration:none;">support@activebuys.com</a> and we’ll help you out! </em>
+
+														</td>
+													</tr>
+												</table>
+											</td>
+
+										</tr>
+									</table>
+								</td>
+								<td width="77" valign="top" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="http://{{site.domain}}/static/images/right.jpg" width="77" height="477" border="0" alt="" /></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+
+					<td style="font-size:0pt; line-height:0pt; text-align:center;"><img src="http://{{site.domain}}/static/images/bottom.jpg" width="643" height="5" border="0" alt="" /></td>
+				</tr>
+			</table>
+			<div style="font-size:0pt; line-height:0pt; height:26px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="26" style="height:26px" alt="" /></div>		</td>
+	</tr>
+	<tr>
+		<td align="center" valign="top">
+			<div style="font-size:0pt; line-height:0pt; height:5px; background:#66762a; "><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="5" style="height:5px" alt="" /></div>			<table width="596" border="0" cellspacing="0" cellpadding="0">
+
+				<tr>
+					<td>
+						<div style="font-size:0pt; line-height:0pt; height:20px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="20" style="height:20px" alt="" /></div>						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td style="color:#a6a5a5; font-family:Arial; font-size:12px; line-height:18px; text-align:left; " valign="top" class="footer" width="110">
+									ACTIVEBUYS, LLC<br />PO Box 681514<br />Franklin, TN 37068<br /><a href="http://{{site.domain}}" style="color:#a6ce39; text-decoration:none;">ACTIVEBUYS.com</a>
+
+								</td>
+								<td width="40" style="font-size:0pt; line-height:0pt; text-align:left;"></td>
+								<td style="color:#a6a5a5; font-family:Arial; font-size:12px; line-height:18px; text-align:left; " valign="top" class="footer">
+									&nbsp;<!--Having trouble viewing this? <a href="#" style="color:#a6ce39; text-decoration:none;">View it in your browser.</a-->
+									<div style="font-size:0pt; line-height:0pt; height:5px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="5" style="height:5px" alt="" /></div>									Add <a href="#" style="color:#a6ce39; text-decoration:none;">deals@activebuys.com</a> to your address book or safe sender list so our emails get to your inbox.
+								</td>
+
+							</tr>
+						</table>
+						<div style="font-size:0pt; line-height:0pt; height:20px"><img src="http://{{site.domain}}/static/images/empty.gif" width="1" height="20" style="height:20px" alt="" /></div>					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+</table>
+
+</body>
+</html>

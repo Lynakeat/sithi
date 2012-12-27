@@ -1,0 +1,44 @@
+{% load thumbnail %}
+
+{% for item in items_list %}
+<div class="entry {% if forloop.last %}last-entry{% endif %}
+    {% if item.is_gift %} entry-gift
+    {% else %}
+        {% if item.is_used %} entry-used{% else %} entry-unused{% endif %}
+    {% endif %}">
+    <div class="img-holder">
+        <a href="#" class="img">
+            {% thumbnail item.deal.deal_photos.all.0.image "90x90" as im %}
+        	    <img src="{{ im.url }}" alt="{{ item.deal }}" />
+        	{% endthumbnail %}
+        </a>
+        {% if item.is_gift %}
+            {% if not item.surprise %}
+            <a href="#" class="btn min-btn resend_gift" rel="{{ item.id }}">RESEND</a>
+            {% endif %}
+        {% else %}
+            {% if item.is_used %}
+                <label class="used-label">Used</label>
+            {% else %}
+                <label class="used-label"><input type="checkbox" value="{{ item.id }}" />Used</label>
+            {% endif %}
+        {% endif %}
+    </div>
+                    
+    {% if item.is_gift %}<div class="gift-mark">{% endif %}
+        <h4>{{item.deal}}</h4>
+        <h5>{{ item.timestamp|date}} (exp {{item.deal.expire_date|date}})</h5>
+    {% if item.is_gift %}</div>{% endif %}
+    
+    <ul>
+        {% if item.is_gift %}<li><span>for</span>{{ item.name_to }}</li>{% endif %}
+        <li><span>Location</span>{{item.location}}</li>
+        <li><span>Non-Profit</span>{{item.nonprofit}}</li>
+        {% if item.is_gift and not item.surprise %}<li><span>Email to</span>{{ item.email_to }}</li>{% endif %}
+        <!--li><span>cause</span>Hands on Nashville</li-->
+    </ul>
+    
+    <a href="{{ item.voucher.pdf.url }}" class="btn big-btn" target="_blank">Print voucher</a>
+</div>
+{% endfor %}
+

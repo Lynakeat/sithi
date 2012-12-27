@@ -1,0 +1,8 @@
+Hi {{user.get_full_name}}!
+
+Click on the link below, or copy the URL into your browser's address bar, to reset your ACTIVEBUYS password.
+
+http://{{ domain }}{% url account-restore-password %}?code={{code}}
+
+Thanks,
+ACTIVEBUYS Team

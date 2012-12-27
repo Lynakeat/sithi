@@ -1,0 +1,47 @@
+{% extends "reviews/base.html" %}
+
+{% block reviews_head_title %}Add review for {{ object.place }}{% endblock %}
+
+{% block reviews_page_title %}Tell Us About Your Experience{% endblock reviews_page_title %}
+
+{% block reviews_content %}
+    <div class="info">
+        <p>Share your thoughts and experiences to help your fellow members learn about all the great businesses in the Nashville community that support active, healthy living.</p>
+        <h2>Be Honest</h2>
+        <p>Let everyone know why you liked/ disliked your experience. Be specific and add lots of details.  And, always be respectful!</p>
+
+        {{ form.non_field_errors}}
+    </div>
+    <div class="form-right">
+        
+        <form action="{% url reviews_add object.id %}" method="post">{% csrf_token %}
+            
+            {% if request.user.is_anonymous %}
+                <p>Only registered users can post reviews.  <a href="{% url account-login %}?_popup=1" class="pop-loader">Log In</a> or <a href="{% url account-registration %}" class="join-btn">JOIN ACTIVEBUYS for FREE!</a></p>
+            {% else %}
+
+                {% for field in form %}
+                    <div class="field {% if field.errors %}error{% endif %}" id="field-{{ field.name }}">
+                    {{ field.errors }}
+                    {% if field.name == 'terms_agreed' %}
+                        {{ field }} <label for="id_{{ field.name }}" class="checkbox-label">I agree to the ACTIVEBUYS <a href="{% url terms %}" target="_blank">terms of service</a> and <a href="{% url policy %}" target="_blank">privacy policy</a>.</label>
+                    {% else %}
+                        {{ field.label_tag }} {{ field }} 
+                    {% endif %}
+                    </div>
+                {% endfor %}
+
+                {% if show_preview %}
+                    <input type="submit" 
+                           value="Preview" />
+                {% else %}               
+                    <input type="submit" 
+                           value="Submit Review" />        
+                {% endif %}
+
+            {% endif %}
+                   
+        </form>
+    </div>
+
+{% endblock reviews_content %}

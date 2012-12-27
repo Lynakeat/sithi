@@ -1,0 +1,114 @@
+{% extends "accounts/base.html" %}
+
+
+{% block sidebar %}   
+    {% include "accounts/_account_side_bar.html" %}
+{% endblock %}
+
+{% block top %}
+        {# account selector #}
+
+        {% include "accounts/_account_list.html" with place="review" %}
+{% endblock %} 
+
+{% block content %}
+    
+    <div class="big-box">
+        <div class="box-c">
+                <div class="marginTop">
+                    <h3>Reviews History</h3>
+
+                    {% load pagination_tags %}
+                    <div class="totalReview">Total Reviews: {{reviews.count}}</div>
+
+                    <div class="sort">
+               
+                <span class="font12">Sort by:</span>             
+                <dl class="dropdown">
+                    <dt><a><span>{{ sort_by }}</span></a></dt>
+                    <dd>
+                        <ul style="display:none;">
+                            <li><a href="?sort=date">Date</a></li>
+                            <li><a href="?sort=rating">Rating</a></li>
+                            <li><a href="?sort=most-helpful">Most Helpful</a></li>
+                            <li><a href="?sort=least-helpful">Least Helpful</a></li>
+
+                        </ul>
+                    </dd>
+                </dl>
+                            
+            </div>
+            <div class="cl"></div>
+            <div class="borderBottom"></div>
+
+                    <table id="reviews-list" class="list" callpadding="0" cellspacing="0">
+                        <tbody>
+
+                            {% autopaginate reviews 5 %}
+                            {% if reviews %}
+                                {% for review in reviews %}
+                                <tr>
+                                    <td colspan="2"><div class="review-main-title"><a href="{{ review.location.get_absolute_url }}">{{ review.location.place|truncatewords:7 }}</a></div></td>
+                                </tr>
+                                <tr class="star">
+                                    <td class="review-meta">                                       
+                                        <div class="review-title">                                            
+                                            {% if review.title %}{{ review.title }}
+                                            {% else %}{{ review.comment|truncatewords:6 }}{% endif %}
+                                           
+                                        </div>
+                                        <div class="review-author">
+                                            posted: {{review.creation_date}}<br/>
+                                            by {{ review.user.get_full_name }}
+                                        </div>                                       
+                                        
+                                    </td>
+                                    <td class="review-comment">&lsquo;{{ review.comment }}&rsquo;
+                                        {% if review.reviewlogs%}
+                                            {% for log in review.reviewlogs %}
+                                                <div class="borderBottom"></div>
+                                                <div>
+                                                    <p>Updated date: {{log.created_date}}</p>
+                                                    <p>&lsquo;{{log.comment}}&rsquo;</p>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                         <div>
+                                            {% include "reviews/_review_log_form.html" with review=review %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><div class="review-rating">
+                                            <span class="rating rating{{ review.score|floatformat:0 }}">{{ review.score|floatformat:0 }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="review-rating">
+                                            {% include "reviews/_vote_form.html" with review=review %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="2" class="note">No reviews currently made.</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+                {% paginate %}
+                <div class="cl">&nbsp;</div>
+            </div>
+            <div class="box-b">&nbsp;</div>
+        </div>        
+    </div>
+
+{% endblock %}
+
+{% block footer_script %}
+<script type="text/javascript" src="{{STATIC_URL}}js/ajax_csrf.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/reviews_vote.js"></script>  
+{% endblock %}
+

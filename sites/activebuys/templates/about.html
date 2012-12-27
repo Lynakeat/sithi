@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block navigation %}{% include 'navigation.html' with place="about" %}{% endblock %}
+
+{% block container %}
+    <div class="main-box">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+            <div class="imgs-section"><img src="{{ STATIC_URL }}css/images/nashville-skyline.jpg" alt="" /></div>
+            <div class="about-section">
+                <h2>About ACTIVEBUYS</h2>
+                <p>Never let anyone tell you the only way to good health is eat less and exercise more!</p>
+                <p>Health = mind + body + spirit.  At ACTIVEBUYS, being healthy is not just about what we eat. It's not just skin deep.  It's a state of mind and a vibrant spirit that permeates our culture.  People don't need to make monumental changes in life to achieve their goals.  Lasting change comes from small, incremental changes made over time.  We are passionate about helping people embrace a lifestyle uniquely healthy for them.  No one size fits all solutions. No quick fixes. We believe being active and healthy is about staying true to yourself, having fun, striving for balance, and most importantly, enjoying the journey!</p>
+            </div>
+            <div class="cl">&nbsp;</div>
+
+            <div id="bios">
+                <div class="bio">
+                    <h4>Michael G.</h4>
+                    <p>After reaching 280+ pounds in 2008, a change was needed.  Over a twelve month journey I lost well over one hundred pounds through education, proper nutrition, exercise and finding balance in my life!  It wasn't easy and it is still not over, but it was the most rewarding experience of my life!  Over seven years working in healthcare didn't teach me how to do this, I had to make the change myself and rely on my friends and family for support.  During this time, my biggest frustration was not being able to go to one central place to find everything I needed: educational articles, reviews, gear, services, and (most frustrating) a calendar with all the events in the city in one place. ACTIVEBUYS was created to fill this void, remove as many barriers to active, healthy living as possible and create a resource to support everyone looking to live life to the fullest.  </p>
+                </div>
+                <div class="bio">
+                    <h4>Christa G.</h4>
+                    <p>Born and raised in New Orleans, LA, I moved to Nashville with my husband 11 years ago and instantly fell in love with this part of the country-- four real seasons, beautiful scenery and a safe place to raise our two sons.  I was raised in a home where healthy eating was a priority, and I am just now understanding what a true gift that was.  My professional experience in the healthcare industry, the loss of my father to cancer, and the gift of my two boys have raised my awareness of what it means to be healthy.  I have a renewed excitement about cooking and getting fit and I believe in living life with a smile, gratitude, love and passion.</p>
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+{% endblock container %}

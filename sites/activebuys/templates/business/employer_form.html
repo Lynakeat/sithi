@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+			<div class="main-box">
+				<div class="box-t">&nbsp;</div>
+				<div class="box-c">
+					<div class="why-section">
+						<div class="left-cnt">
+							<h2>ACTIVEBUYS Wellness Program</h2>
+							<p>Finally, an innovative wellness program that delivers excitement, engagement, and RESULTS! Break down your employees' barriers to active, healthy living!</p>
+
+							<h3>Engage your Employees | Drive Results</h3>
+							<ul id="employer">
+								<li><span>provide <span class="bold">economic incentives</span> and <span class="bold">tangible benefits</span></span></li>
+								<li><span><span class="bold">motivate</span> employees in real-time to engage in an active, healthy lifestyle</span></li>
+								<li><span><span class="bold">educate</span> and <span class="bold">empower</span> individuals to take small incremental steps for lasting change</span></li>
+								<li><span><span class="bold">no</span> costly exchange of data</span></li>
+								<li><span>easily <span class="bold">integrate</span> and drive <span class="bold">participation</span> with existing health and wellness programs</span></li>
+							</ul>
+							<p>Contact us today to learn more on how to effectively create more active, healthy employees.</p>
+						</div>
+
+						<div class="right-cnt form">
+                            {% if not form %}
+                            <div class="thankyou-txt" style="display: block">
+                                <h3>Thank You</h3>
+                                <p>Thank you for contacting ACTIVEBUYS. We’ll review your message and get back to you as soon as possible.</p>
+                            </div>
+                            {% else %}
+							<h3>Request More Information</h3>
+							<form action="" method="post">{% csrf_token %}
+								<div class="row">
+									<span class="field {% if form.business_name.errors %}error-field{% endif %}">
+                                        {{ form.business_name }}
+                                        {{ form.business_name.errors }}
+									</span>
+									<span class="field {% if form.contact_name.errors %}error-field{% endif %}">
+                                        {{ form.contact_name }}
+                                        {{ form.contact_name.errors }}
+                                    </span>
+									<div class="cl">&nbsp;</div>
+								</div>
+
+								<div class="row">
+									<span class="field {% if form.email.errors %}error-field{% endif %}">
+                                        {{ form.email }}
+                                        {{ form.email.errors }}
+                                    </span>
+									<span class="field {% if form.phone.errors %}error-field{% endif %}">
+                                        {{ form.phone }}
+                                        {{ form.phone.errors }}
+                                    </span>
+									<div class="cl">&nbsp;</div>
+								</div>
+
+								<span class="field {% if form.website.errors %}error-field{% endif %}">
+                                    {{ form.website }}
+                                    {{ form.website.errors }}
+                                </span>
+								<span class="field {% if form.city.errors %}error-field{% endif %}">
+                                    {{ form.city }}
+                                    {{ form.city.errors }}
+                                </span>
+
+                                <input type="hidden" name="form_type" value="employer" />
+
+								<input type="submit" class="bussines-form-submit btn bigger-btn" value="Submit" />
+							</form>
+                            {% endif %}
+						</div>
+
+						<div class="cl">&nbsp;</div>
+					</div>
+				</div>
+				<div class="box-b">&nbsp;</div>
+			</div>
+
+			{% comment %}
+			<div class="main-box">
+				<div class="box-t">&nbsp;</div>
+				<div class="box-c">
+					<div class="big-cols">
+						<div class="left-col">
+							<h4>We not only bring you new customers, we bring you the RIGHT customers. Our members are: </h4>
+							<ul>
+								<li>Loyal and passionate about living an   active, healthy lifestyle</li>
+								<li>More likely to become long-term,   repeat customers </li>
+								<li>Ready and willing to invest in their active,   healthy lifestyle </li>
+							</ul>
+						</div>
+
+						<div class="right-col">
+							<h3>ACTIVEBUYS instantly connects your business with local affinity groups, social organizations and non-profit agencies providing targeted market exposure.  These relationships enhance your market reach and market share by getting your business name, products and services in front of the people that want them most.</h3>
+
+							<div class="col">
+								<p>ACTIVEBUYS’s management team is comprised of veteran health and wellness industry experts, and we are active, healthy consumers. </p>
+							</div>
+
+							<div class="col min-right-col">
+								<p>We will work with you every step of the process to carefully craft a deal to drive maximum exposure, sales and new, long-term customers.</p>
+							</div>
+
+							<div class="cl">&nbsp;</div>
+						</div>
+
+						<div class="cl">&nbsp;</div>
+					</div>
+				</div>
+				<div class="box-b">&nbsp;</div>
+			</div>
+			{% endcomment %}
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "accounts/base.html" %}
+
+
+{% load thumbnail easy_maps_tags cache %}
+{% block sidebar %}   
+ 
+    <div class="side-box">
+        <div class="box-t"> </div>
+        <div class="box-c">
+            <h3>Category</h3>
+            <ul>
+                {% if subcategories %}
+                    {% for category in subcategories %}
+                        <li><a href="{% url account-resource-subcategory category.0.slug %}">{{category.0.name}} ({{category.1}})</a></li>
+                    {% endfor %}
+                {% else %}
+                        There is no subcategory.
+                {% endif %}
+            </ul>
+        </div>
+        <div class="box-b"></div>
+    </div>
+{% endblock %}
+{% block top %}
+        {# account selector #}
+
+        {% include "accounts/_account_list.html" with place="resources" %}
+{% endblock %} 
+{% block content %}    
+    <div class="big-box ">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c my-resources"> 
+        {% load follow_tags %}
+        {% if companies %}
+            {% for l in companies %}
+
+            <div class="location-left"> 
+                <div class="location-featured">            
+                {% follow_form l %}            
+                </div>
+                {% if l.logo %}
+                    {% thumbnail l.logo "114x300" as im %} {# crop="center" #}
+                    {% if show_all %}
+                        <img class="location-logo" src="{{ im.url }}" alt="{{ l.place }}" />
+                    {% else %}
+                        <a href="{{ l.get_absolute_url }}" title="{{ l.place }}"><img class="location-logo" src="{{ im.url }}" alt="{{ l.place }}" /></a>
+                    {% endif %}
+                    {% endthumbnail %}
+                {% endif %}
+                <div class="location-info"> 
+                   
+                    <div class="location-name">                
+                        {% if show_all %}
+                            <h3>{{ l.place }}</h3>
+                        {% else %}
+                            <a href="{{ l.get_absolute_url }}" title="{{ l.place }}"><h3>{{ l.place }}</h3></a>
+                        {% endif %}
+                    </div>
+                     
+                    <div class="font11">Category: {% for c in l.categories.all %}{{ c }} {% endfor %}</div>
+                    <div class="font11">Subcategory: {% for s in l.subcategories.all %} 
+                        <a href="{% url account-resource-subcategory s.slug %}">{{ s }} </a>
+
+                        {% endfor %}</div>
+                    <div class="location-reviews">                
+                        {% if l.average_rating %}
+                            <span class="rating rating{{ l.average_rating|floatformat:0 }}">{{ l.average_rating|floatformat:0 }}</span> {{ l.total_reviews }} Review{{ l.total_reviews|pluralize }}
+                        {% endif %}          
+                    </div>
+                </div>        
+                {% if l.description %}
+                    <div class="location-description expandable"><p>"{{ l.description }}"</p></div>    
+                {% endif %}
+            
+            </div>
+
+            <div class="borderBottom clear"></div>
+            {% endfor%}
+            {% else %}
+                There is no any resource.
+            {% endif %}
+        <div class="cl"></div>
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+{% endblock %}

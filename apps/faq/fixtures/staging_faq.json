@@ -1,0 +1,101 @@
+[
+    {
+        "pk": 1, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 1, 
+            "question": "How much does it cost to join ACTIVEBUYS?"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 2, 
+            "question": "Do I have to refer other people so I can get the deal?"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 3, 
+            "question": "How do I buy the deal?"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 4, 
+            "question": "What payment methods do you accept?"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 5, 
+            "question": "When can I use my voucher?"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 6, 
+            "question": "How do I use my voucher?"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 7, 
+            "question": "Can I buy a voucher as a gift?"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 8, 
+            "question": "What happens if the provider goes out of business?"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 9, 
+            "question": "How can I feature my business on ACTIVEBUYS?"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 10, 
+            "question": "Can my athletic or social group partner with ACTIVEBUYS?"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "faq.faq", 
+        "fields": {
+            "answer": "Not at all, however, if you do refer someone and they buy a deal, you will receive [X%] off your next purchase. All they have to do is enter your email address when they sign-up!", 
+            "sort_order": 11, 
+            "question": "I\u2019m very partial to a specific charity. How do I get them included on your list of non-profits?"
+        }
+    }
+]

@@ -1,0 +1,293 @@
+/*
+============================================================================
+ GENERAL
+============================================================================
+*/
+#ab-widget, #ab-widget div, #ab-widget h2, #ab-widget h3, #ab-widget ul, #ab-widget ol, #ab-widget li, #ab-widget a {
+    background: none;
+    position: relative;
+    float: none;
+    color: #4C4C4C;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border: 0px none;
+    clear: none;
+}
+
+#ab-widget h2, #ab-widget h3 {
+    font: 100% "ABCenturyGothic", Arial, Helvetica, sans-serif;
+}
+
+#ab-widget ol, #ab-widget li {
+    list-style: none;
+}
+
+#ab-widget .ab-hide-text {
+    display: block;
+    text-indent: -9000%;
+}
+
+
+/*
+============================================================================
+ TYPOGRAPHY
+============================================================================
+*/
+#ab-widget .ab-bold {
+    font-weight: bold;
+}
+
+#ab-widget .ab-point-12-16 {
+    font-size: 75%;
+	line-height: 133.33%;
+}
+
+#ab-widget .ab-point-10-16 {
+    font-size: 62.5%;
+	line-height: 160%;
+}
+
+#ab-widget .ab-point-8-10 {
+    font-size: 50%;
+	line-height: 125%;
+}
+
+#ab-widget .ab-align-center {
+	text-align: center;
+}
+
+#ab-widget .ab-uppercase {
+	text-transform: uppercase;
+}
+
+
+/*
+============================================================================
+ WIDGET
+============================================================================
+*/
+#ab-widget, #ab-widget .widget-content {
+	position: relative;
+    display: block;
+    width: 220px;
+    height: 365px;
+    font: 16px/20px "ABCenturyGothic", Arial, Helvetica, sans-serif;
+}
+
+#ab-widget {
+	background: url('images/bg_2.png') no-repeat 0px 0px;
+    font: 16px/20px "ABCenturyGothic", Arial, Helvetica, sans-serif;
+}
+
+#ab-widget .ab-loading {
+    background: #FFFFFF url('images/loading.gif') no-repeat center 100px;
+    position: absolute;
+    width: 218px;
+    height: 290px;
+    left: 1px;
+    top: 70px;
+}
+
+
+/*
+============================================================================
+ HEADER
+============================================================================
+*/
+#ab-widget .ab-logo a {
+    display: block;
+    width: 220px;
+    height: 70px;
+}
+
+#ab-widget .ab-menu {
+    background: url('images/menu.png') repeat-x 0px 0px;
+    width: 218px;
+    height: 28px;
+    padding: 0px 1px 0px 1px;
+    border-top: 1px solid #D1D1D1;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+#ab-widget .ab-menu li {
+    display: block;
+    float: left;
+    width: 71px;
+    height: 28px;
+    border-left: 1px solid #AFAFAF;
+    border-right: 1px solid #DDDDDD;
+}
+
+#ab-widget .ab-menu .ab-first {
+    width: 70px;
+    border-left: 0px none;
+}
+
+#ab-widget .ab-menu .ab-last {
+    border-right: 0px none;
+}
+
+#ab-widget .ab-menu a, #ab-widget .ab-menu .ab-active {
+    display: block;
+    color: #383838;
+    height: 22px;
+    padding: 6px 0px 0px 0px;
+}
+
+#ab-widget .ab-menu .ab-active, #ab-widget .ab-menu a:hover {
+    background: url('images/menu.png') repeat-x left -28px;
+}
+
+
+/*
+============================================================================
+ DEALS
+============================================================================
+*/
+#ab-widget .ab-deals, #ab-widget .ab-deal {
+    position: absolute;
+    display: block;
+    height: 230px;
+    width: 166px;
+}
+
+#ab-widget .ab-deals {
+    left: 28px;
+    top: 100px;
+    overflow: hidden;
+}
+
+#ab-widget .ab-deal {
+    background: #FFFFFF;
+    display: none;
+    left: 0px;
+    top: 0px;
+}
+
+#ab-widget .ab-deal.ab-active {
+    display: block;
+	z-index: 200;
+}
+
+#ab-widget .ab-deal.ab-next {
+    display: block;
+	z-index: 100;
+}
+
+#ab-widget .ab-deal .ab-title {
+    display: block;
+    height: 30px;
+    padding: 5px 0px 0px 0px;
+    overflow: hidden;
+}
+
+#ab-widget .ab-deal img {
+    /*background: #4C4C4C;*/
+    display: block;
+    color: #FFFFFF;
+    width: 166px;
+    height: 166px;
+    margin: 6px 0px 0px 0px;
+}
+
+#ab-widget a.ab-hero {
+    display: block;
+    width: 166px;
+    height: 166px;
+}
+
+
+/*
+============================================================================
+ SLIDE NAV
+============================================================================
+*/
+#ab-widget .ab-slide-prev, #ab-widget .ab-slide-next {
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 20px;
+    top: 236px;
+}
+
+#ab-widget .ab-slide-prev {
+    background: url('images/slide-nav.png') no-repeat center 4px;
+    left: 6px;
+}
+
+#ab-widget .ab-slide-prev:hover {
+    background: url('images/slide-nav.png') no-repeat center -16px;
+}
+
+#ab-widget .ab-slide-next {
+    background: url('images/slide-nav.png') no-repeat center -36px;
+    right: 6px;
+}
+
+#ab-widget .ab-slide-next:hover {
+    background: url('images/slide-nav.png') no-repeat center -56px;
+}
+
+#ab-widget .ab-slide-nav {
+    position: absolute;
+    display: block;
+    width: 166px;
+    height: 16px;
+    left: 28px;
+    bottom: 18px;
+}
+
+#ab-widget .ab-slide-link {
+    background: url('images/slide-nav.png') no-repeat center -76px;
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 0px 2px 0px 2px;
+}
+
+#ab-widget .ab-slide-link.ab-active, #ab-widget .ab-slide-link:hover {
+    background: url('images/slide-nav.png') no-repeat center -92px;
+}
+
+
+/*
+============================================================================
+ SLIDE NAV
+============================================================================
+*/
+#ab-widget .ab-main-link {
+    position: absolute;
+    width: 166px;
+    left: 28px;
+    bottom: 6px;
+}
+
+
+/*
+============================================================================
+ TYPEFACES
+============================================================================
+*/
+@font-face {
+    font-family: 'ABCenturyGothic';
+    src: url('../css/fonts/century_gothic_regular_wwww.font-cat.com-webfont.eot');
+    src: url('../css/fonts/century_gothic_regular_wwww.font-cat.com-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../css/fonts/century_gothic_regular_wwww.font-cat.com-webfont.woff') format('woff'),
+         url('../css/fonts/century_gothic_regular_wwww.font-cat.com-webfont.ttf') format('truetype'),
+         url('../css/fonts/century_gothic_regular_wwww.font-cat.com-webfont.svg#CenturyGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ABCenturyGothic';
+    src: url('../css/fonts/centgtb-webfont.eot');
+    src: url('../css/fonts/centgtb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../css/fonts/centgtb-webfont.woff') format('woff'),
+         url('../css/fonts/centgtb-webfont.ttf') format('truetype'),
+         url('../css/fonts/centgtb-webfont.svg#CenturyGothicBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+

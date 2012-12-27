@@ -1,0 +1,169 @@
+[
+    {
+        "pk": 1, 
+        "model": "deals.deal", 
+        "fields": {
+            "original_price": "60", 
+            "is_featured": true, 
+            "total_number": 100, 
+            "title": "Lake Tahoe Water Adventure a Kayak Rental for Two", 
+            "per_user": 1, 
+            "price": "30", 
+            "created": "2011-06-17 08:05:28", 
+            "locations": [
+                1, 
+                2
+            ], 
+            "slug": "lake-tahoewater-adventure-kayak-rental-two", 
+            "home_page": false, 
+            "fine_print": "One deal per person. Multiple may be purchased as gifts. Valid from June to September 18, 2011. Reservations required; subject to availability. Not valid on holidays or Saturdays. No extensions. 48-hour cancellation policy.", 
+            "expire_date":  "2011-12-12", "end_time": "2011-07-17 16:04:02", 
+            "background": 1, 
+            "sold": 2, 
+            "company": 1, 
+            "start_time": "2011-01-17 16:04:02", 
+            "details": "- Kayak the crystal clear waters of Lake Tahoe with this rental.\r\n- Bring a date or best friend and get cozy in a kayak a deux.\r\n- Pack a lunch & stop to relax on the beach in between strokes.\r\n- Enjoy two single kayaks or snuggle into a romantic double.\r\n- Kayaking's a way to get back to nature while sculpting those delts.\r\n- Enjoy two single kayaks or snuggle into a romantic double."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "deals.deal", 
+        "fields": {
+            "original_price": "8", 
+            "is_featured": true, 
+            "total_number": 100, 
+            "title": "Kashi Granola Bars", 
+            "per_user": 0, 
+            "price": "5", 
+            "created": "2011-06-22 05:27:34", 
+            "locations": [
+                1, 
+                2 
+            ], 
+            "slug": "kashigranola-bars", 
+            "home_page": false, 
+            "fine_print": "One deal per person. Multiple may be purchased as gifts. Valid from June to September 18, 2011. Reservations required; subject to availability. Not valid on holidays or Saturdays. No extensions. 48-hour cancellation policy.", 
+            "expire_date":  "2011-12-12", "end_time": "2011-08-22 13:26:03", 
+            "background": 1, 
+            "sold": 0, 
+            "company": 1, 
+            "start_time": "2011-01-17 16:04:02", 
+            "details": "- Kayak the crystal clear waters of Lake Tahoe with this rental.\r\n- Bring a date or best friend and get cozy in a kayak a deux.\r\n- Pack a lunch & stop to relax on the beach in between strokes.\r\n- Enjoy two single kayaks or snuggle into a romantic double.\r\n- Kayaking's a way to get back to nature while sculpting those delts.\r\n- Enjoy two single kayaks or snuggle into a romantic double."
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "deals.deal", 
+        "fields": {
+            "original_price": "10", 
+            "is_featured": true, 
+            "total_number": 100, 
+            "title": "Hugo Gym", 
+            "per_user": 1, 
+            "price": "3", 
+            "created": "2011-06-22 05:35:12", 
+            "locations": [
+                1, 
+                2
+            ], 
+            "slug": "hugogym", 
+            "home_page": false, 
+            "fine_print": "One deal per person. Multiple may be purchased as gifts. Valid from June to September 18, 2011. Reservations required; subject to availability. Not valid on holidays or Saturdays. No extensions. 48-hour cancellation policy.", 
+            "expire_date":  "2011-12-12", "end_time": "2011-08-22 13:26:03", 
+            "background": 1, 
+            "sold": 0, 
+            "company": 1, 
+            "start_time": "2011-01-17 16:04:02", 
+            "details": "- Kayak the crystal clear waters of Lake Tahoe with this rental.\r\n- Bring a date or best friend and get cozy in a kayak a deux.\r\n- Pack a lunch & stop to relax on the beach in between strokes.\r\n- Enjoy two single kayaks or snuggle into a romantic double.\r\n- Kayaking's a way to get back to nature while sculpting those delts.\r\n- Enjoy two single kayaks or snuggle into a romantic double."
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide.jpg", 
+            "sort_order": 1, 
+            "deal": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_1.jpg", 
+            "sort_order": 2, 
+            "deal": 1
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_2.jpg", 
+            "sort_order": 3, 
+            "deal": 1
+        }
+    },
+    {
+        "pk": 4, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide.jpg", 
+            "sort_order": 1, 
+            "deal": 2
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_1.jpg", 
+            "sort_order": 2, 
+            "deal": 2
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_2.jpg", 
+            "sort_order": 3, 
+            "deal": 2
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide.jpg", 
+            "sort_order": 1, 
+            "deal": 3
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_1.jpg", 
+            "sort_order": 2, 
+            "deal": 3
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "deals.picture", 
+        "fields": {
+            "image": "staging/uploads/deals/11/06/slide_2.jpg", 
+            "sort_order": 3, 
+            "deal": 3
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "deals.background", 
+        "fields": {
+            "image": "staging/uploads/deals-bg/11/06/body.jpg", 
+            "title": "Sea"
+        }
+    }
+]

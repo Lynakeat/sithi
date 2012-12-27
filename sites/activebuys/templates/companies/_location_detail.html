@@ -1,0 +1,102 @@
+{% load thumbnail easy_maps_tags cache %}
+
+<div class="location-detail">
+    {% with object as l %}
+    
+    <div class="location-left">
+        {% load follow_tags %}
+        {% if featured_location %}
+            {% if l.favorite %}
+                <div class="location-favorite">
+                    Member Favorite</div>
+            {% else %}
+                <div class="location-featured">
+                     Featured Business</div>
+            {% endif %}
+        {% endif %}
+        
+        <div class="location-featured">{% follow_form l %} </div>
+        {% if l.logo %}
+            {% thumbnail l.logo "114x300" as im %} {# crop="center" #}
+            {% if show_all %}
+                <img class="location-logo" src="{{ im.url }}" alt="{{ l.place }}" />
+            {% else %}
+                <a href="{{ l.get_absolute_url }}" title="{{ l.place }}"><img class="location-logo" src="{{ im.url }}" alt="{{ l.place }}" /></a>
+            {% endif %}
+            {% endthumbnail %}
+        {% endif %}
+        <div class="location-info">
+            <div class="location-name">
+                {% if show_all %}
+                    <h3>{{ l.place }}</h3>
+                {% else %}
+                    <a href="{{ l.get_absolute_url }}" title="{{ l.place }}"><h3>{{ l.place }}</h3></a>
+                {% endif %}</div>
+            <div class="location-distance">
+                {{ l.distance.mi|floatformat:1 }} mile{{ l.distance.mi|pluralize }} | <a href="{{ object.map_it }}" title="Get Directions" target="_blank">Get Directions</a>
+                {% if l.company.companyaddress_set.count > 1 %}
+                    <br />
+                    <a href="#more-locations" class="pop-loader-inline">Other Locations</a>
+                    <div style="display:none;">
+                        <div id="more-locations">
+                            <h3>Other Locations</h3>
+                            <ul>
+                            {% for loc in l.company.companyaddress_set.all %}
+                                <li><a href="{{ loc.get_absolute_url }}">{{ loc.place }}</a></li>
+                            {% endfor %}
+                            </ul>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="location-reviews">
+                {% if l.average_rating %}
+                    <span class="rating rating{{ l.average_rating|floatformat:0 }}">{{ l.average_rating|floatformat:0 }}</span> {{ l.total_reviews }} Review{{ l.total_reviews|pluralize }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="location-links">    
+            <span class='st_sharethis_hcount' displayText='ShareThis'></span>  
+            {% if l.facebook_profile %}
+                | <a href="{{ l.facebook_profile }}" class="facebook" target="_blank" title="Facebook Profile">Facebook Profile</a>
+            {% endif %}
+            {% if l.website %}
+                | <a href="{{ l.website }}" class="website" target="_blank">Company Website</a>
+            {% endif %}           
+        </div>
+        
+
+        {% if l.hours or l.phone or l.email %}
+        <div class="location-contact">
+            <div class="location-hours">
+                {{ l.hours|linebreaksbr }}
+            </div>
+            {% if l.phone %}<div class="location-phone">{{ l.phone }}</div>{% endif %}
+            {% if l.email %}<div class="location-email"><a href="mailto: {{ l.email }}">Email Us</a></div>{% endif %}
+        </div>
+        {% endif %}
+        {% if l.description %}
+        <div class="location-description expandable"><p>"{{ l.description }}"</p></div>    
+        {% endif %}
+        {% if l.locationphoto_set.count > 0 and show_all %}
+        <div class="location-photos">
+            {% for photo in object.locationphoto_set.all %}
+                {% thumbnail photo.image "57x36" crop="center" as im %}
+                {% thumbnail photo.image "600x600" as big %}
+                    <a href="{{ big.url }}" class="pop-loader" ><img src="{{ im.url }}" height="{{ im.height }}" width="{{ im.width }}" /></a>
+                {% endthumbnail %}
+                {% endthumbnail %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="location-right">
+        <div class="location-map">
+        {% cache 600 location_map l.full_address %}
+            {% easy_map l.full_address 320 250 %}
+        {% endcache %}
+        </div>
+    </div>
+    {% endwith %}
+</div>

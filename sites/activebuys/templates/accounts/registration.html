@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block facebook_js %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+
+{% block container %}
+    <div class="main-box">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+
+            <div class="join-section">
+                <h3>Join ACTIVEBUYS</h3>
+                <div class="form">
+                    <form action="" method="post">{% csrf_token %}
+                        <span class="field {% if form.name.errors %}error-field{% endif %}">
+                            {{ form.name }}
+                            {{ form.name.errors }}
+                        </span>
+                        <span class="field {% if form.email.errors %}error-field{% endif %}">
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </span>
+                        <span class="field {% if form.password1.errors %}error-field{% endif %}">
+                            <input type="text" value="Password" class="fake-pass" title="Password" />
+                            {{ form.password1 }}
+                            {{ form.password1.errors }}
+                        </span>
+                        <span class="field {% if form.password2.errors %}error-field{% endif %}">
+                            <input type="text" value="Verify Password" class="fake-pass" title="Verify Password" />
+                            {{ form.password2 }}
+                            {{ form.password2.errors }}
+                        </span>
+
+                        <h4>City</h4>
+                         {{ form.subscribe_location }}
+                         {% if form.subscribe_location.errors %}
+                         	<span style="color:#FF7100; font-size: 10px;">Please select at least one city</span>
+                         {% endif %}
+
+                        <h4>Referred by</h4>
+                        <span class="field {% if form.referred_email.errors %}error-field{% endif %}">
+                            {{ form.referred_email }}{{ form.referred_email.error }}
+                        </span>
+
+                        {% comment %}
+                        <p class="refer-link">
+                            <a href="{% url registration-refer-popup %}" class="pop-loader cboxElement">Refer 10 friends. Get 1 free deal.</a>
+                        </p>
+                        {% endcomment %}
+                        <div class="horizontal-divider">&nbsp;</div>
+
+                        <ul>
+                            <li><div class="custom-check">{{ form.is_agree }}</div><label>I agree to the <a href="{% url terms %}">Terms</a> &amp; <a href="{% url policy %}">Privacy Policy</a></label></li>
+                        </ul>
+                        {% if form.is_agree.errors %}
+                        	<span style="color:#FF7100; font-size: 10px;">You must agree to our Terms &amp; Privacy Policy prior to joining.</span>
+                        {% endif %}
+                        {{ form.honeypot }}
+                        {{ form.timestamp }}
+
+                        <input type="text" class="btn contact-btn" value="Join Now" onclick="$(this).parents('form').submit();" />
+
+                        <p class="small-txt">By joining you are opting in to receive emails from ACTIVEBUYS.</p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="main-left">
+                <div class="imgs-section"><img src="{{ STATIC_URL }}css/images/nashville-skyline.jpg" alt="" /></div>
+                <div class="about-section">
+                    <h2>Nashville&rsquo;s One-Stop Resource for Active, Healthy Living</h2>
+                    <p>Awesome deals, personal reviews &amp; blogs, an events calendar that keeps pulse of all local events - ACTIVEBUYS has everything to fuel active, healthy living. Cut down on the time you spend running around the web and get out and enjoy your life! Ready, set, go!</p>
+                </div>
+                <div class="cl">&nbsp;</div>
+
+                <div class="join cols">
+                    <div class="col">
+                        <h4><a href="{% url deals-home %}"><span class="active">ACTIVE</span> DEALS</a></h4>
+                        <p><a href="{% url deals-home %}">Exclusive deals on everything you need to get active and stay healthy.</a></p>
+                    </div>
+                    <div class="col">
+                        <h4><a href="{% url resources %}"><span class="active">ACTIVE</span> RESOURCES</a></h4>
+                        <p><a href="{% url resources %}">Directory of all things active and healthy with exclusive rewards to boost your lifestyle.</a></p>
+                    </div>
+                    <div class="col">
+                        <h4><a href="http://blog.activebuys.com"><span class="active">ACTIVE</span> LIVING</a></h4>
+                        <p><a href="http://blog.activebuys.com">Heart pumping reviews, tips, people profiles, recipes and more.</a></p>
+                    </div>
+                    <div class="col right-col">
+                        <h4><a href="http://blog.activebuys.com/?page_id=351"><span class="active">ACTIVE</span> CALENDAR</a></h4>
+                        <p><a href="http://blog.activebuys.com/?page_id=351">All the best local events, races, workshops and festivals in one place.</a></p>
+                    </div>
+                    <div class="cl">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="cl">&nbsp;</div>
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+
+    <div class="main-box registration">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+            <div id="lower_test" style="float: left; width: 458px; padding-right: 30px;">
+                <h3>Learn More</h3>
+                <h4><a href="{% url business %}">Get Listed</a></h4>
+                <p>Join the ACTIVEBUYS network and promote your business to Nashville’s exclusive active, healthy living community. Click <a href="{% url business %}">here</a> for more information.</p>
+                <h4><a href="{% url business %}">Get Featured</a></h4>
+                <p>Looking for a more effective way to market your organization and align your brand with active, healthy living? Click <a href="{% url business %}">here</a> for more information.</p>
+                <h4><a href="{% url employer %}">For Employers</a></h4>
+                <p>Looking for an innovative and engaging health promotion and wellness program for your employees? Click <a href="{% url employer %}">here</a> for more information.</p>
+            </div>
+            <div id="facebook-test" style="float: left;">
+                <h3>Follow Us</h3>
+                <div class="fb-like-box" data-href="http://www.facebook.com/activebuys" data-width="385" data-height="250" data-show-faces="false" data-stream="true" data-header="false"></div>
+            </div>
+
+            <div class="cl">&nbsp;</div>
+
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,980 @@
+/* =====================================================
+FOXYCART.COM
+
+@theme		standard
+@version	0.7.1
+@for		cart, checkout
+
+@usage		Link to this CSS file from your cart and checkout templates,
+			or use it as a starting point to create your own custom CSS.
+			
+			This stylesheet is designed to be used at about 760px wide.
+			While it may work at other widths, it may require tweaking.
+
+@support	forum.foxycart.com
+
+@notes		IE6 hacks, when necessary, are with the underscore hack.
+			Supported browsers are IE6+, FF2+, Opera 9+, Safari 3+.
+			Styles are not listed alphabetically, but rather in order of
+			size, positioning, backgrounds/colors, text, and other.
+
+@IMPORTANT	Before you attempt to use this file to customize this CSS file, please review:
+			http://wiki.foxycart.com/screencasts
+			Especially: http://wiki.foxycart.com/screencasts:customizing_your_checkout
+			We promise it will be worth it, even if you're a CSS expert.
+
+===================================================== */
+
+
+/* INITIALIZE
+===================================================== */
+
+#fc_checkout_container *,
+#fc_receipt_container * {
+	box-sizing:content-box; /* for Opera 8 */
+	margin:0;
+	padding:0;
+	color:#444;
+	font-size:12px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	line-height:1.2;
+}
+#fc_cart_container * {
+	margin:0;
+	padding:0;
+}
+
+
+/* CART ^^cart^^ STYLES, FOXYBOX.JS STYLES
+===================================================== */
+/* This is the container that the cart gets called inside of: */
+#fc_cart_container {
+	margin:0 auto;
+	padding:0;
+	overflow:hidden; width:100%; /* Clear floats, IE6 fix */
+	background:url(https://admin.foxycart.com/themes/standard/images/cart-title.png) no-repeat top left;
+	color:#666;
+	font-size:10px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	line-height:1.2;
+}
+
+/* The form contains everything but the <noscript> message */
+#fc_cart_form {
+	padding:45px 0 0;
+	overflow:hidden; width:100%; /* Clear floats, IE6 fix */
+}
+
+
+/* Define some styles for the cart table */
+#fc_cart_table {
+	width:100%;
+	clear:both;
+	border-collapse:collapse;
+	font-size:11px;
+}
+#fc_cart_table caption {
+	display: none;
+}
+
+#fc_cart_table td,
+#fc_cart_table th {
+	padding: 2px 0;
+	color:#666;
+	text-align:left;
+	vertical-align:top;
+	font-size:11px;
+}
+
+/* We'll set some basic widths to keep things appropriate */
+#fc_cart_head_item {
+	width: 110px;
+	padding-left: 14px !important;
+}
+#fc_cart_head_quantity,
+#fc_cart_head_price {
+	width:25%;
+}
+
+#fc_cart_head_quantity {
+	width: 25px;
+}
+
+#fc_cart_head_price {
+	padding-left: 8px !important;
+	width: 48px;
+}
+
+#fc_cart_table td {
+	border-bottom: 1px solid #b8b8b8;
+}
+/* The header cells */
+#fc_cart_table thead th {
+	border-top: 1px solid #b8b8b8;
+	border-bottom: 1px solid #b8b8b8;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	color: #848484;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: arial, sans-serif;
+	letter-spacing:1px;
+}
+/* The footer cells */
+#fc_cart_table tfoot td {
+	border-bottom: 0;
+	background: transparent;
+	font-size:11px;
+}
+#fc_cart_table tfoot td.fc_col1 {
+	text-align: left;
+	padding-left: 64px !important;
+	color: #848484;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 4px 0;
+}
+
+#fc_cart_table tfoot td.fc_col2 {
+	color: #4c4c4c !important;
+	font-weight: bold;
+	line-height: 17px;
+	padding-left: 4px;
+}
+
+#fc_cart_foot_total td.fc_col1 {
+	color: #ccc !important;
+	text-align:right;
+}
+/* The subscription sub-total footer row */
+#fc_cart_foot_subscriptions td, #fc_cart_foot_future_shipping td {
+	color:#900;
+}
+#fc_cart_foot_subscriptions td.fc_col1, #fc_cart_foot_future_shipping td.fc_col1 {
+	font-style:italic;
+}
+#fc_cart_table #fc_cart_foot_total td {
+	background: transparent;
+	color: #848484 !important;
+	font-weight: bold;
+}
+
+#fc_cart_table #fc_cart_foot_total td.fc_col2  {
+	background: transparent;
+	color: #4c4c4c !important;
+	font-weight: bold;
+}
+
+#fc_cart_table #fc_empty_cart {
+	padding:40px;
+	text-align:center;
+}
+/* Item "remove" links */
+#fc_cart_table .fc_cart_remove_left,
+#fc_cart_table .fc_cart_remove_right {
+	display:none;
+}
+input.fc_cart_item_quantity {
+	float:left;
+}
+
+
+#fc_cart_table .fc_cart_remove_link {
+	width:20px;
+	height:0; overflow:hidden;
+	padding:16px 0 0 0;
+	display:block;
+	background:url(https://admin.foxycart.com/themes/standard/images/cart_item_remove.png) no-repeat 8px -3px;
+}
+#fc_cart_table .fc_cart_remove_link:hover {
+	background-position:8px -27px;
+}
+
+/* Coupons */
+tfoot #fc_cart_foot_discount_error td {
+	background:#ffe6e6;
+	color:#600;
+}
+#fc_cart_foot_discount_new a {
+	color:#900;
+}
+tr.fc_cart_foot_discount span.fc_discount {
+	float:left;
+}
+tr.fc_cart_foot_discount span.fc_cart_coupon_remove {
+	float:left;
+}
+tr.fc_cart_foot_discount a.fc_cart_remove_link {
+	/* We'll override some styles to make it fit better */
+	padding-top:14px !important;
+	background-position:8px -6px !important;
+}
+tr.fc_cart_foot_discount a.fc_cart_remove_link:hover {
+	background-position:8px -30px !important;
+}
+
+
+/* Cart items */
+#fc_cart_container tr.fc_cart_item td {
+	vertical-align: top;
+	padding-left: 13px;
+	font-size: 11px;
+	color: #4c4c4c;
+	font-weight: bold;
+}
+#fc_cart_container td.fc_cart_item_name {}
+#fc_cart_container td.fc_cart_item_image a img {
+	border: 0px;
+	width: 150px;
+}
+#fc_cart_container ul.fc_cart_item_options,
+#fc_cart_container li.fc_cart_item_subscription_details ul {
+	margin:0 0 5px;
+	padding: 8px 0 0 0;
+	background:none;
+	list-style:outside;
+	list-style-type:none;
+	text-align: left;
+	width: 90px;
+}
+#fc_cart_container li.fc_cart_item_option {
+	background:none;
+	color:#666;
+	font-weight: normal;
+	font-size: 10px;
+	border: 0; padding-bottom: 0;
+	margin-bottom: 0;
+	width: 180px;
+}
+#fc_cart_container li.fc_cart_item_subscription_details ul {
+	border-top:1px solid #ccc;
+}
+#fc_cart_container li.fc_cart_item_subscription_details ul li.fc_cart_item_option {
+}
+#fc_cart_container input.fc_cart_item_quantity {
+	width:2.5em;
+	padding:2px 4px;
+	border:1px solid #ccc;
+	font-size:11px;
+}
+
+#fc_cart_container span.fc_cart_item_price_total,
+#fc_cart_container span.fc_cart_item_price_each {
+	display:block;
+}
+#fc_cart_container span.fc_cart_item_price_each {
+	color:#666;
+	font-size:9px;
+}
+
+td.fc_cart_item_price { padding-left: 7px !important; }
+
+/* Multiship specific styles */
+th.fc_shipto {
+	background:#eee;
+	font-weight:bold;
+}
+th.fc_shipto a {
+	color:#666;
+}
+
+/* Noscript and Checkout */
+#fc_error_noscript {
+	margin:10px 0 25px 0;
+	padding:5px 5px 5px 25px;
+	border:1px solid #d03d39;
+	display:block; clear:both;
+	color:#900;
+	background:url(https://admin.foxycart.com/themes/standard/images/icon-warning.png) no-repeat 5px 8px;
+	font-weight:normal;
+}
+#fc_error_noscript p {
+	color:#900;
+}
+#fc_error_noscript a {
+	text-decoration:underline;
+}
+
+
+/* DEFAULT FOXYCART CHECKOUT & RECEIPT STYLING
+===================================================== */
+#fc_checkout_container {
+	/* This sets the main checkout image (cart -> checkout -> receipt) */
+	margin-top: 0;
+	padding: 0;
+	background: transparent;
+}
+
+#fc_checkout_container h2,
+#fc_receipt_container h2 {
+	/* This sets all the <h2> tags to be replaced with images, which are set below on a per-section basis */
+	height:0; overflow:hidden;
+	padding-top:20px;
+	background:no-repeat top left;
+}
+#fc_checkout_container p,
+#fc_receipt_container p {
+	padding:0 10px 10px;
+}
+
+#fc_checkout_container ol,
+#fc_receipt_container ol {
+	margin:0;
+	padding:0 0 15px;
+	list-style-type:none;
+	height: 100%; overflow: hidden;
+}
+#fc_checkout_container span.fc_ast,
+#fc_receipt_container span.fc_colon {
+	color:#aaa;
+}
+
+#fc_checkout_container .fc_error {
+	color:#D03B39 !important;
+}
+
+span.fc_clear {
+	height:0; overflow:hidden;
+	float:none; clear:both;
+	display:block;
+}
+
+span.fc_help, span.fc_help * {
+	color:#aaa !important;
+}
+
+
+
+/* MESSAGES (Errors, Warnings, and Info for Cart and Checkout)
+===================================================== */
+#fc_message_container {
+	margin:15px 0;
+	color:#333;
+}
+#fc_message_container ul {
+	list-style:none;
+}
+#fc_message_container div.fc_message {
+	margin:5px 0;
+	padding:5px 5px 5px 25px;
+	border-width:1px;
+	border-style:solid;
+	display:block;
+	font-weight:normal;
+}
+#fc_error_container li {
+	list-style:none outside;
+}
+
+#fc_error_container {
+	border-color:#d03d39;
+	color:#900;
+	background:#FFE4E1 url(https://admin.foxycart.com/themes/standard/images/icon-warning.png) no-repeat 6px 4px;
+}
+#fc_warning_container {
+	border-color:#f9bd3b;
+	color:#333;
+	background:#FFFFCC url(https://admin.foxycart.com/themes/standard/images/icon-warning.png) no-repeat 6px 4px;
+}
+#fc_info_container {
+	border-color:#266473;
+	color:#266473;
+	background:#E6F1F4 url(https://admin.foxycart.com/themes/standard/images/icon-info.blue.png) no-repeat 9px 3px;
+}
+
+#fc_checkout_container #fc_message_container {
+	width:47%;
+}
+
+/* Email/Password messages */
+#fc_checkout_container .fc_account_message {
+	margin:10px 0;
+	padding:5px 10px 10px 24px;
+	border-color:#266473;
+	color:#266473;
+	background:#E6F1F4 url(https://admin.foxycart.com/themes/standard/images/icon-info.blue.png) no-repeat 8px 5px;
+}
+
+
+/* LINKS (Cart & Checkout, Foxybox.js)
+===================================================== */
+#fc_checkout_container a.fc_link_nav,
+#fc_cart_container a.fc_link_nav,
+#fc_receipt_links a.fc_link_nav {
+	height:0; overflow:hidden;
+	padding-top:20px;
+	margin-left:15px;
+	display:block;
+	background-position:right top;
+	background-repeat:no-repeat;
+}
+#fc_checkout_container a.fc_link_nav:hover,
+#fc_cart_container a.fc_link_nav:hover,
+#fc_receipt_links a.fc_link_nav:hover {
+	background-position:right -20px;
+}
+
+#fc_cart_container a.fc_cart_checkout_paypal {
+	height:auto; overflow:auto;
+	width:auto;
+	padding-top:0;
+	vertical-align:middle;
+}
+#fc_cart_container a.fc_cart_checkout_paypal img {
+	border:none;
+}
+
+
+#fc_cart_controls_top,
+#fc_cart_controls_bottom {
+	margin:12px 10px 15px 0;
+	text-align:right;
+}
+#fc_cart_controls_top {
+	margin-top:-30px;
+}
+#fc_cart_container #fc_cart_controls_top a.fc_cart_update,
+#fc_cart_container #fc_cart_controls_bottom a.fc_cart_update {
+	width:75px;
+	padding-top:24px;
+	margin-right:50px;
+	background-image:url(https://admin.foxycart.com/themes/standard/images/cart-update.png);
+}
+#fc_cart_container a.fc_cart_checkout {
+	width:95px;
+	padding-top: 16px;
+	height: 17px;
+	background-image:url(https://admin.foxycart.com/themes/standard/images/cart-checkout.png);
+}
+#fc_cart_container a.fc_cart_update:hover,
+#fc_cart_container a.fc_cart_checkout:hover {
+	background-position:right -24px;
+}
+
+#fc_cart_container a.fc_inactive:hover {
+	cursor:default;
+	background-position:right top;
+}
+
+#fc_continue a.fc_link_forward {
+	width:100%;
+}
+
+
+
+
+/* FORM ELEMENTS
+===================================================== */
+#fc_checkout_container div.fc_fieldset_container,
+#fc_receipt_container div.fc_fieldset_container {
+	
+}
+
+#fc_checkout_container li.fc_row,
+#fc_receipt_container li.fc_row {
+	float: left; display: inline; width: 194px; padding-bottom: 16px !important; position: relative;
+}
+
+#fc_checkout_container li.error-row label.fc_error, #fc_receipt_container li.error-row label.fc_error {
+	display: block !important;
+}
+
+/* Clearfix the li.fc_row elements*/
+li.fc_row:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+} 
+li.fc_row {
+	display: inline-block;
+} 
+html[xmlns] li.fc_row {
+	display: block;
+} 
+* html li.fc_row {
+	height: 1%;
+}
+
+
+#fc_checkout_container h2,
+#fc_receipt_container h2 {
+	margin:0;
+	border-bottom:2px solid #b2b2b2;
+	color:#666; color:#D03C3A;
+	font-size:18px;
+	text-transform:lowercase;
+}
+
+#fc_checkout_container fieldset,
+#fc_receipt_container fieldset {
+	margin:0 0 0 0;
+	padding: 0;
+	border:none;
+}
+#fc_checkout_container legend,
+#fc_receipt_container legend {
+	padding:2px 8px;
+	border-bottom:2px solid #d6d6d6;
+	display:none;
+	color:#333;
+	font-size:16px;
+	font-weight:bold;
+}
+
+
+/* Labels */
+#fc_checkout_container label.fc_pre,
+#fc_checkout_container span.fc_pre,
+#fc_receipt_container span.fc_pre {
+	width: ;
+	padding: ;
+	float: ;
+	line-height: ;
+	text-align: ;
+}
+#fc_checkout_container .fc_row_error label.fc_pre {
+	color:#d03c3a;
+}
+#fc_checkout_container label.fc_error {
+	font-size: 10px;
+	color: #ff7100 !important;
+}
+#fc_checkout_container label.fc_error a {
+	color:#D03B39;
+}
+#fc_checkout_container #fc_form_checkout_error {
+	width:auto;
+	margin:15px 0;
+	clear:none;
+	background-color:#f7e0df;
+	background-position:5px center;
+}
+
+
+
+/* Radios and Checkboxes */
+#fc_checkout_container li.fc_row_radio,
+#fc_checkout_container li.fc_row_checkbox {
+	padding-left:36%;
+	margin-bottom:5px;
+}
+#fc_checkout_container label.fc_radio,
+#fc_checkout_container label.fc_checkbox {
+	width: ;
+	float: ;
+	padding-bottom: ;
+}
+#fc_checkout_container label.fc_radio span,
+#fc_checkout_container label.fc_checkbox span {
+	
+}
+#fc_checkout_container input.fc_radio,
+#fc_checkout_container input.fc_checkbox {
+	margin:2px 10px 5px 0;
+	*margin-top:0;
+	float:left;
+}
+/* Radios and Checkboxes without labels */
+#fc_checkout_container .fc_row_radio label.fc_radio,
+#fc_checkout_container .fc_row_checkbox label.fc_checkbox {
+	width:97%;
+}
+
+
+
+
+/* Text Input Styles */
+#fc_checkout_container input.fc_text {
+	width:155px;
+	padding:3px 6px;
+	border:0;
+	background:#d6d6d6;
+}
+#fc_checkout_container input.fc_text_short {
+	width:6em;
+}
+#fc_checkout_container .fc_row_error input.fc_text {
+	background:#FF8583; background:#f7e0df;
+}
+#fc_checkout_container input.fc_text_readonly {
+	background-color:#eee;
+	color:#000;
+}
+
+
+/* 0: PRE-CHECKOUT ELEMENTS
+===================================================== */
+#fc_cancel_continue_shopping {
+	margin:0 0 10px;
+}
+#fc_cancel_continue_shopping a {
+	background: url(images/back-arr.png) no-repeat 0 2px; padding-left: 8px; font-size: 12px; font-family: arial, sans-serif; color: #8ba547;
+}
+
+
+
+/* 1: LOGIN OR REGISTER
+===================================================== */
+#fc_login_register_container {
+	clear:left;
+	display: none;
+}
+div.fc_fieldset_container {
+	clear:left;
+}
+#fc_login_register_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/checkout-step1-email.png);
+}
+div#fc_continue a.fc_link_nav {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/button-continue.png);
+}
+
+
+/* 2: ADDRESSES
+===================================================== */
+#fc_customer_billing_container h2 {
+	border: 0; height: 100%; font-size: 18px; color: #ff7100; font-family: "CenturyGothic", arial, sans-serif; line-height: 20px; padding-bottom: 10px; text-transform: capitalize;
+}
+
+#fc_address_shipping_container {
+	clear:none;
+	/* IMPORTANT: "clear:right" in IE6 will cause the browser to HARD CRASH on page load.
+		At this point we're not sure why, but if you change the floats, make sure you test in IE6. */
+	_clear:inherit;
+}
+#fc_address_shipping_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/checkout-step2a-address.png);
+}
+#fc_use_different_address {
+	display: none;
+	margin-top:3px;
+	padding-top:10px;
+	border-top:1px dashed #aaa;
+}
+/* Hide the "company" fields by default */
+#li_customer_company {
+	display:none;
+}
+
+/* 2: ADDRESSES, MULTISHIP
+===================================================== */
+#fc_address_multiship_container h2 {
+	position:relative;
+	background-image:url(https://admin.foxycart.com/themes/standard/images/checkout-step2a-multiship.png);
+}
+#fc_address_multiship_container ol.fc_shipto_subtotal {
+	padding:8px 0;
+}
+#fc_address_multiship_container ol.fc_shipto_options {
+	border-bottom:1px dashed #aaa;
+}
+#fc_address_multiship_container div.fc_shipto_actions {
+	margin:8px 0 0;
+	padding:8px 0 8px 98px;
+	border-top:1px dashed #aaa;
+}
+#fc_address_multiship_container div.fc_shipto_actions a {
+	color:#D03C3A;
+}
+#fc_address_multiship_container h2 span.fc_shipto_name {
+	position:absolute; bottom:0; left:160px;
+	font-size:18px;
+	font-weight:normal;
+	color:#D03C3A;
+}
+
+#fc_address_multiship_container div.fc_shipto_display_country {
+	padding-bottom:4px;
+	margin-bottom:4px;
+	border-bottom:1px dashed #aaa;
+}
+#fc_address_multiship_container div.fc_shipping_methods_inner {
+	padding-left:80px !important;
+}
+/* Hide the "company" fields by default */
+#li_shipping_company, li.li_shipping_company {
+	display:none;
+}
+
+
+
+/* 3: DELIVERY & SUBTOTAL
+===================================================== */
+#fc_checkout_container div.fc_shipping_methods_container {
+	margin-bottom:10px;
+	padding-bottom:10px;
+	border-bottom:1px dashed #aaa;
+	overflow:auto;
+}
+#fc_checkout_container div.fc_downloadable_message_container {
+	margin-bottom:10px;
+	border-bottom:1px dashed #aaa;
+}
+#fc_shipping_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/checkout-step3-shipping.png);
+}
+#fc_checkout_container div.fc_shipping_methods {
+	float:none;
+}
+#fc_checkout_container div.fc_shipping_methods_inner {
+	padding-left:5px;
+	margin-bottom:15px;
+}
+#fc_checkout_container label.fc_shipping_methods {
+	width:auto;
+	padding-bottom:10px;
+	display:block;
+	float:none;
+	font-weight:bold;
+	text-align:left;
+}
+#fc_checkout_container div.fc_shipping_methods_inner label.fc_radio {
+	width:100%;
+}
+#fc_checkout_container div.fc_shipping_methods_inner label.fc_radio:hover {
+	background:#eee;
+	cursor:pointer;
+}
+#fc_checkout_container div.fc_shipping_methods_container label.fc_radio span {
+	float:left; /* Necessary to make IE6/7 render properly */
+	padding:0 .4em 0 0;
+}
+#fc_checkout_container div.fc_shipping_methods_container label.fc_radio span.fc_shipping_cost {
+	padding:0 0 0 15px;
+	float:right;
+	font-weight:bold;
+}
+#fc_shipping_container { 
+	display: none;
+}
+#fc_shipping_container #fc_shipping_methods_container label.fc_pre {
+	padding:0 0 10px;
+}
+div.fc_shipping_methods_container div.fc_row_error {
+	background:#f7e0df;
+}
+
+
+/* 4: PAYMENT INFORMATION
+===================================================== */
+#fc_checkout_container #fc_payment_container {
+	margin-right:0;
+	margin-bottom:0;
+	padding-bottom:0;
+	float: none;
+	display: block;
+	width: 100% !important;
+}
+#fc_payment_container h2 {
+	border: 0; height: 100%; font-size: 18px; color: #ff7100; font-family: "CenturyGothic", arial, sans-serif; line-height: 20px; padding-bottom: 10px; text-transform: capitalize;
+}
+#fc_c_card_saved_number {
+	display:block;
+	text-align:left;
+	color:#ff7100;
+	font-weight:bold;
+}
+
+li.fc_row_payment_method label.fc_radio img {
+	vertical-align:middle;
+}
+
+#fc_checkout_container li fieldset {
+	width:100%;
+	margin:10px 0 20px;
+	padding:10px 0;
+	position:relative; top:5px;
+	clear:both;
+	border:none;
+	background-color:#f3f3f3;
+}
+#fc_checkout_container li fieldset label.fc_pre {
+	width:auto;
+	padding-left:5%;
+}
+#fc_checkout_container li fieldset li.fc_row_radio,
+#fc_checkout_container li fieldset li.fc_row_checkbox {
+	padding-left:5%;
+}
+
+#fc_checkout_container input#cc_number {}
+#fc_checkout_container input#cc_cvv2, #fc_checkout_container input#issue_number {
+	width:3em;
+}
+
+#fc_complete_order_button_container {
+	
+}
+#fc_complete_order_button {
+	height: 33px; display: block; font-size: 14px; color: #404040; text-shadow: 1px 1px 1px #fff; font-weight: bold; text-align: center; background-position: 0 0; background-repeat: no-repeat; line-height: 30px; text-transform: uppercase; border: 0; cursor: pointer;
+	width: 179px; background-image: url(images/contact-btn.png);
+	line-height: 32px;
+}
+#fc_complete_order_button:hover {
+	background-position: 0 bottom;  color: #fff; text-shadow: 0 0 0 transparent;
+}
+
+
+
+/* CHECKOUT CART DISPLAY
+===================================================== */
+#fc_checkout_cart {
+	width: 216px;
+	margin: 0 -17px;
+}
+
+#fc_checkout_cart #fc_cart_container {
+	padding-top:0;
+	background:none;
+}
+
+
+/* CART TEMPLATE STYLES
+===================================================== */
+#cartTitle {
+	margin:15px;
+}
+#cartBody {
+	margin:0 0 0;
+}
+#cartColL {
+	width:100px;
+	float:left;
+	text-align:center;
+}
+#cartColR {
+	float:left;
+}
+
+
+
+/* RECEIPT SPECIFIC STYLES
+===================================================== */
+#fc_receipt_container {
+	/* This sets the main checkout image (cart -> checkout -> receipt) */
+	padding:100px 5px 50px;
+	background:url(https://admin.foxycart.com/themes/standard/images/receipt-header.png) no-repeat top center;
+}
+#fc_receipt_container h1 {
+	display:none;
+}
+
+#fc_receipt_container fieldset {
+	margin-left:0;
+}
+
+/* Heading Replacements */
+#fc_receipt_container div.fc_fieldset_container_shipto h2,
+#fc_receipt_container div.fc_fieldset_container_shipto h2 
+	{
+	height:auto;
+	color:#666;
+	font-size:18px;
+	font-weight:normal;
+}
+#fc_receipt_download_links_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-download.png);
+}
+#fc_receipt_general_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-general.png);
+}
+#fc_receipt_order_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-order.png);
+}
+#fc_receipt_billing_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-billing.png);
+}
+#fc_receipt_shipping_container h2 {
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-shipping.png);
+}
+#fc_receipt_container div.fc_fieldset_container_shipto h2,
+#fc_receipt_container div.fc_fieldset_container_shipto h2 {
+	height:auto;
+}
+
+/* Layout */
+#fc_receipt_shipping_container {
+	clear:right;
+	/* IMPORTANT: "clear:right" in IE6 will cause the browser to HARD CRASH on page load.
+		At this point we're not sure why, but if you change the floats, make sure you test in IE6. 
+		IE7 doesn't hard crash but doesn't display properly either, so the asterisk hack targets both IE6 and IE7. */
+	*clear:inherit;
+}
+#li_shipping_name_first {
+	margin-top:15px;
+	padding-top:15px;
+	border-top:1px dashed #aaa;
+}
+
+/* Styling */
+#fc_receipt_download_links ul li {
+	margin-left:15px;
+	background:none;
+	list-style:square outside;
+}
+#fc_receipt_download_links ul li a {
+	color:#D03C3A;
+}
+#fc_receipt_download_links ul li a:hover {
+	text-decoration:underline;
+}
+
+#fc_checkout_container span.fc_pre,
+#fc_receipt_container span.fc_pre {
+	padding-bottom:5px;
+}
+#fc_checkout_container span.fc_text,
+#fc_receipt_container span.fc_text {
+	padding:5px 0 0; margin:0;
+	float:none; clear:right;
+	*float:left;
+	display:block;
+	text-align:left;
+}
+
+#fc_receipt_links {
+	margin:15px 0 30px;
+	float:right; clear:both;
+	text-align:center;
+}
+#fc_receipt_links a#fc_receipt_print_link {
+	width:164px;
+	margin:0 30px 0 0;
+	float:left;
+	background-image:url(https://admin.foxycart.com/themes/standard/images/receipt-print.png);
+}
+#fc_receipt_links a#fc_receipt_continue_link {
+	width:97px;
+	margin:0 30px 0 0;
+	float:left;
+	background-image:url(https://admin.foxycart.com/themes/standard/images/button-continue.png);
+}
+
+
+#fc_cart_foot_shipping_tbd { display: none; }
+#fc_cart_foot_shipping { display: none; }
+#fc_cart_foot_tax_tbd { display: none; }
+
+#fc_customer_country_name { display: none; }
+
+#fc_checkout_container #li_cc_saved { padding-left: 0px; float: left; clear: both; }
+#fc_checkout_container #li_cc_new { float: left; padding-left: 0px; padding-right: 100px; height: 46px; }
+
+#li_cc_number,
+#li_cc_exp_month { clear: left; }
+#li_issue_number,
+#li_start_month,
+#li_nopayment{ display: none !important; }
+
+#li_save_cc { padding-left: 10px !important; width: 370px !important; padding-top: 23px !important; }
+
+.fc_cart_item ul.fc_cart_item_options {
+    width: 90px;
+}
+
+.fc_cart_item ul.fc_cart_item_options li {
+    width: 180px;
+}

@@ -1,0 +1,69 @@
+{% extends "accounts/base.html" %}
+
+{% block extra_head %}
+<script type="text/javascript" src="{{STATIC_URL}}js/ajax_csrf.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.entry-unused input[type="checkbox"]').click(function(){
+        var item = $(this).parents('.entry');
+        $.ajax({
+            type: 'POST',
+            url: '{% url account-deal-mark-as-used %}',
+            data: {'id': $(this).val()},
+            success: function(){
+                item.removeClass('entry-unused').addClass('entry-used');
+            },
+            dataType: 'json'
+        });
+        $(this).parent('label').remove();
+    });
+    $('.entry-gift .resend_gift').click(function(){
+        $.ajax({
+            type: 'POST',
+            url: '{% url account-resend-gift %}',
+            data: {'id': $(this).attr('rel')},
+            success: function(){
+                alert("Voucher was sent");
+            },
+            dataType: 'json'
+        })
+        return false;
+    })
+})
+</script>
+{% endblock%}
+
+{% block sidebar %}  
+      {% include "accounts/_account_side_bar.html" %}
+{% endblock %}
+{% block top %}
+        {# account selector #}
+
+        {% include "accounts/_account_list.html" with place="purchase" %}
+{% endblock %} 
+{% block content %}
+    
+    <div class="big-box ">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">  
+                <div class="">
+                    <h3 class="left">Purchase History</h3>
+                    <select class="purchase-history-list">
+                        <option value="entry">All</option>
+                        <option value="entry-used">Used</option>
+                        <option value="entry-unused">Unused</option>
+                        <option value="entry-gift">Gift</option>
+                    </select>
+                    <div class="cl">&nbsp;</div>
+                    
+                    {% include "accounts/_account_deals_list.html" with items_list=user.accountdeal_set.active.all %}
+                    
+                </div>
+                
+                <div class="cl">&nbsp;</div>
+            </div>
+            <div class="box-b">&nbsp;</div>
+        </div>
+        
+    </div>
+{% endblock %}

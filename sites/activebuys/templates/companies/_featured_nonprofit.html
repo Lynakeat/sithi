@@ -1,0 +1,14 @@
+{% load thumbnail %}
+{% if company %}
+    <div class="box-t">&nbsp;</div>
+    <div class="box-c">
+        <h3>Featured Non-Profit</h3>
+        <a href="{{ company.website }}" rel="nofollow" target="_blank">
+            {% thumbnail company.logo "180x400" as im %}
+        	    <img src="{{ im.url }}" alt="{{ company }}" />
+        	{% endthumbnail %}
+        </a>
+        {#}<p class="bigger-link"><a href="{{ company.website }}" rel="nofollow" target="_blank">{{ company }}</a></p>{#}
+    </div>
+    <div class="box-b"> </div>
+{% endif %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}   
+    <div class="side-box">
+        <div class="box-t"> </div>
+        <div class="box-c">
+            <ul>
+            {% if categories %}
+                <li id="{{category.category_id}}" class="widget widget_categories">
+                    <h4 class="widgettitle">Categories</h4>
+                    <ul>
+                    {% for category in categories %}
+                        <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </li>
+
+            {% else %}        
+                <li>There are no categories.</li>
+            {% endif %}
+                <li id="archives-3">
+                    <h4 class="widgettitle">Archives</h4>
+                    <ul>  
+                        {% for month in months %}
+                            <li><a href="{% url activebuys.apps.blogs.views.view_archive month.0 month.1 %}">{{ month.2}} {{ month.0}}</a> </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="box-b"></div>
+    </div>
+{% endblock %}
+{% load pagination_tags %}
+{% block content %}    
+    {% autopaginate posts 1 %}
+    {% if posts %}
+            {% for post in posts %}                
+                <div class="post-{{post.id}} post type-post big-box status-{{post.status}}">
+                    <div class="box-t"> </div>
+                    <div class="box-c">
+                        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                        <p>
+                            {% autoescape off %}
+                                {{post.content|safe|truncatewords:"200" }}
+                            {% endautoescape %}                             
+                            <a href="{{ post.get_absolute_url }}" class="more-link">READ MORE</a>                   
+                        </p>         
+                        <p>
+                            <span class='st_facebook_buttons' displayText='Facebook' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                            <span class='st_twitter_buttons' displayText='Tweet' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                            <span class='st_linkedin_buttons' displayText='LinkedIn' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                            <span class='st_email_buttons' displayText='Email' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                            <span class='st_sharethis_buttons' displayText='ShareThis' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                            <span class='st_fblike_buttons' displayText='Facebook Like' st_url='{{ post.get_absolute_url }}' st_title='{{ post.title }}'></span>
+                        </p>               
+                        <div class="meta">
+                            <p>Posted on {{ post.posted|date:"l F dS, Y" }} by ACTIVEBUYS in 
+                                 {% for category in categories %}   
+                                    <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                 {% endfor%}
+                            </p>
+                            <div class="socials">
+
+                                <div class="cl">&nbsp;</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-b"></div>
+                </div>
+            {% endfor %}
+    {% else %}    
+
+
+    <div class="big-box">
+        <div class="box-t"> </div>
+        <div class="box-c">
+            <p>There are no posts.</p>
+        </div>
+        <div class="box-b"></div>
+    </div>
+    {% endif %}
+    {% load i18n %}
+    <div class="navigation">  
+            {% if page_obj.has_previous %}
+                <div class="alignright"><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}" class="prev">{% trans "Newer Entries" %} &rsaquo;&rsaquo;</a> </div>         
+            {% endif %}
+            {% if page_obj.has_next %}
+                <div class="alignleft"><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}" class="next">&lsaquo;&lsaquo; {% trans "Older Entries" %}</a> </div>
+            {% endif %}     
+     </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+<script type="text/javascript">
+$(function(){
+    $(".btn.signup-btn").click(function(){
+        $('input[name="fcc_session_id"]').val(fcc.session_get());
+    });
+})
+</script>
+{% endblock %}
+
+{% block container %}
+    <div class="main-box deal-box">
+        <div class="box-t">&nbsp;</div>
+        <div class="box-c">
+            <div class="center-divider">
+            <form method="POST">{% csrf_token %}
+                <input type="hidden" name="fcc_session_id" value="" />
+                <div class="cart">
+                    <h4>Your Purchase</h4>
+                        <table cellspacing="0" cellpadding="0" id="fc_cart_table">
+                            <thead>
+                                <tr id="fc_cart_head">
+                                    <th id="fc_cart_head_item"><span>Item</span></th>
+                                    <th id="fc_cart_head_quantity"><span>Quantity</span></th>
+                                    <th id="fc_cart_head_price"><span>Price</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fc_cart_item fc_cart_item_last">
+                                    <td>
+                                        {{ object }}
+                                        <div style="color:red;">
+                                        {{ form.quantity.errors }}
+                                        </div>
+                                    </td>
+                                    <td class="fc_cart_item_quantity">
+                                        {{ form.quantity }}
+                                    </td>
+                                    <td class="fc_cart_item_price">
+                                        <span class="fc_cart_item_price_total">${{object.price|floatformat:"-2"}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    <div class="cart-extra-options">
+                        <div class="part">
+                            {% if object.slug = "orgain" %}
+                                <h4>Choose</h4>
+                            {% else %}
+                                <h4>Choose a <br />Location</h4>
+                            {% endif %}
+                            {{ form.location }}
+                        </div>
+
+                        <div class="part right-part">
+                            <h4>Choose a Non-Profit to Benefit</h4>
+                            <h5><a href="#" class="profit-link">Change</a><span class="current-nonprofit">&nbsp;</span><a href="#" class="tip-load" rel="You may keep the Featured Non-Profit for your donation or click the Change button to select another from our list">(?)</a></h5>
+                            <div class="cl">&nbsp;</div>
+                            {{ form.nonprofit }}
+                        </div>
+
+                        <div class="cl">&nbsp;</div>
+                    </div>
+                </div>
+
+                <div class="gift-section">
+                    {% if object.allow_gifts %}
+                    <h4>Is This Deal a Gift?</h4>
+                    <div class="form">
+                        <div class="radios">
+                            {{ form.is_gift|removetags:"ul li" }}
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                        <div class="gift-hidden-holder">
+                            <div class="gift-hidden">
+                                <div class="fieldset">
+                                    <label for="to-field">To:</label>
+                                    <span class="field {% if form.name_to.errors %}error-field{% endif %}">
+                                        {{ form.name_to }}
+                                        {{ form.name_to.errors }}
+                                    </span>
+                                </div>
+
+                                <div class="fieldset right-fieldset">
+                                    <label for="from-field">From:</label>
+                                    <span class="field {% if form.name_from.errors %}error-field{% endif %}">
+                                        {{ form.name_from }}
+                                        {{ form.name_from.errors }}
+                                    </span>
+                                </div>
+
+                                <div class="cl">&nbsp;</div>
+
+                                <label for="msg-field">Message:</label>
+                                <span class="textarea-field">{{ form.message }}</span>
+
+                                <div class="gift-options radios">
+                                    <div class="option">
+                                        <label><input type="radio" class="radio" name="surprise" value="False" {% if form.surprise.value == 'False' %}checked{% endif %}/>Email to:</label>
+                                        <span class="field {% if form.email_to.errors %}error-field{% endif %}">
+                                            {{ form.email_to }}
+                                            {{ form.email_to.errors }}
+                                        </span>
+                                    </div>
+
+                                    <div class="option right-option">
+                                        <label><input type="radio" class="radio" name="surprise" value="True" {% if form.surprise.value == 'True' %}checked{% endif %}/>This is a surprise. I'll print myself.</label>
+                                    </div>
+
+                                    <div class="cl">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gift-form-btns">
+                            <input type="submit" class="btn signup-btn" value="Add to Cart" />
+                            <a href="{{ object.get_absolute_url }}" class="cancel-btn">Cancel</a>
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="form">
+                        <div class="radios">&nbsp;</div>
+                        <div class="gift-hidden-holder">&nbsp;</div>
+                        <div class="gift-form-btns">
+                            <input type="submit" class="btn signup-btn" value="Add to Cart" />
+                            <a href="{{ object.get_absolute_url }}" class="cancel-btn">Cancel</a>
+                            <div class="cl">&nbsp;</div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="cl">&nbsp;</div>
+            </form>
+            </div>
+        </div>
+        <div class="box-b">&nbsp;</div>
+    </div>
+    <div class="cl">&nbsp;</div>
+{% endblock %}
